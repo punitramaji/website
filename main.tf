@@ -67,3 +67,8 @@ resource "aws_cloudfront_distribution" "cf" {
 resource "aws_cloudfront_origin_access_identity" "name" {
   commnet = "OAI for ${var.endpoint}"
 }
+
+resource "aws_s3_bucket_policy" "s3policy" {
+  bucket = aws_s3_bucket.website.id
+  policy = "???"
+}
