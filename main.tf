@@ -29,7 +29,7 @@ resource "aws_cloudfront_distribution" "cf" {
     origin_id   = aws_s3_bucket.website.bucket_regional_domain_name
     
     s3_origin_config {
-      origin_access_identity = "???"
+      origin_access_identity = aws_cloudfront_origin_access_identity.oai.cloudfront_access_identity_path
     }
   }
   
