@@ -104,3 +104,15 @@ resource "aws_acm_certificate_validation" "certvalidation" {
   certificate_arn = aws_acm_certificate.cert.arn
   validation_record_fqdns = [for r in aws_route53_record.certvalidation : r.fqdn]
 }
+
+resource "aws_route53_record" "websiteurl" {
+  name    = var.endpoint
+  zone_id = "???"
+  type    = "A"
+  
+  alias {
+    name                   = "???"
+    zone_id                = "???"
+    evaluate_target)health = true
+  }
+}
