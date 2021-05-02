@@ -72,3 +72,11 @@ resource "aws_s3_bucket_policy" "s3policy" {
   bucket = aws_s3_bucket.website.id
   policy = data.aws_iam_policy_document.s3policy.json
 }
+
+resource "aws_acm_certificate" "cert" {
+  provider                  = aws.us-east-1
+  domain_name               = var.domain_name
+  subject_alternative_names = ["*.${var.domain.name}"]
+  validation_method         = "DNS"
+  tags                      = local.tags
+}
