@@ -22,11 +22,11 @@ resource "aws_s3_bucket_public_access_block" "s3block" {
 }
 
 resource "aws_cloudfront_distribution" "cf" {
-  enable = true
-  aliases = [ "???" ]
+  enable  = true
+  aliases = [var.endpiont]
   origin {
-    domain_name = "???"
-    origin_id = "???"
+    domain_name = aws_s3_bucket.website.bucket_regional_domain_name
+    origin_id   = aws_s3_bucket.website.bucket_regional_domain_name
     
     s3_origin_config {
       origin_access_identity = "???"
