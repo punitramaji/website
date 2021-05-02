@@ -95,7 +95,7 @@ resource "aws_route53_record" "certvalidation" {
   records         = [each.value.record]
   ttl             = 60
   type            = each.value.type
-  zone_id         = "???"
+  zone_id         = data.route53_zone.domain.zone_id
 }
 
 resource "aws_acm_certificate_validation" "certvalidation" {
