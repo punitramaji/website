@@ -7,3 +7,7 @@ variale "endpoint" {
   description = "Endpoint url"
   type        = string
 }
+
+variable "region" {
+  description = "AWS region"
+}
