@@ -24,6 +24,8 @@ resource "aws_s3_bucket_public_access_block" "s3block" {
 resource "aws_cloudfront_distribution" "cf" {
   enable  = true
   aliases = [var.endpiont]
+  default_root_object = "index.html"
+
   origin {
     domain_name = aws_s3_bucket.website.bucket_regional_domain_name
     origin_id   = aws_s3_bucket.website.bucket_regional_domain_name
@@ -56,7 +58,6 @@ resource "aws_cloudfront_distribution" "cf" {
   }
 
   viewer_certificate {
-#    acm_certificate_arn      = aws_acm_certificate.cert.arn
     acm_certificate_arn      = aws_acm_certificate.cert.arn
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1.2_2018"
