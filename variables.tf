@@ -10,4 +10,10 @@ variale "endpoint" {
 
 variable "region" {
   description = "AWS region"
+  type = string
+}
+
+variable "domain_name" {
+  description = "Doamin name"
+  type = string
 }
